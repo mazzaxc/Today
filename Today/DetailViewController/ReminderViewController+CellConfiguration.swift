@@ -42,9 +42,11 @@ extension ReminderViewController {
     {
         var contentConfiguration = cell.datePickerConfiguration()
         contentConfiguration.date = date
+        contentConfiguration.onChange = { [weak self] dueDate in
+            self?.workingReminder.dueDate = dueDate
+        }
         return contentConfiguration
     }
-    
     
     func notesConfiguration(for cell: UICollectionViewListCell, with notes: String?)
     -> TextViewContentView.Configuration
